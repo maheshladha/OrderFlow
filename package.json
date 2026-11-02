@@ -3,16 +3,28 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node --watch server/index.js",
+    "client": "vite --host 127.0.0.1",
     "build": "vite build",
-    "start": "vite --host 127.0.0.1"
+    "start": "node server/index.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mssql": "^11.0.1",
+    "msnodesqlv8": "^6.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
     "vite": "^6.0.7"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "msnodesqlv8@6.2.1": true
   }
 }
